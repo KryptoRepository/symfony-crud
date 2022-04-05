@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ItemController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Items list</h1>
+
+    <button class="btn btn-success add-button" data-bs-toggle="modal" data-bs-target="#addItemModal">
+        Add new
+    </button>
+    <div class="items" id="items-list" data-url="{{ path('items_list') }}">
+
+    </div>
+
+{#    {% for item in items %}#}
+{#        <div class="row list__item">#}
+{#            <div class="col-md-5 list__item-cell">{{ item.name }}</div>#}
+{#            <div class="col-md-5 list__item-cell">{{ item.price }}</div>#}
+{#            <div class="col-md-2 list__item-cell">#}
+{#                #}{# TODO: modal window#}
+{#                <a href="#">action</a>#}
+{#            </div>#}
+{#        </div>#}
+{#    {% endfor %}#}
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="addItemModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
