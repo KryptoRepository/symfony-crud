@@ -20,6 +20,11 @@ class ProductController extends AbstractController
         ]);
     }
 
+    #[Route('/list', name: 'app_product_list', methods: ['GET'])]
+    public function items(ProductRepository $productRepository):Response {
+        return $this->json($productRepository->findAll());
+    }
+
     #[Route('/new', name: 'app_product_new', methods: ['GET', 'POST'])]
     public function new(Request $request, ProductRepository $productRepository): Response
     {
@@ -63,7 +68,7 @@ class ProductController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_product_delete', methods: ['POST'])]
+    #[Route('/{id}/delete', name: 'app_product_delete', methods: ['POST'])]
     public function delete(Request $request, Product $product, ProductRepository $productRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {

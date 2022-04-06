@@ -17,7 +17,7 @@ $(document).ready(function () {
     $('#addItemModal').on('shown.bs.modal', function () {
         $('#addItemModal').trigger('focus')
     })
-    renderItems($('#items-list').attr("data-url"));
+    renderItems($('#product-list').attr("data-url"));
 });
 
 function renderItems(url) {
