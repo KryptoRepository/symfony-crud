@@ -7,12 +7,12 @@ use App\Repository\ItemRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ItemController extends AbstractController
 {
-    #[Route('/', name: 'home', methods: ['GET'])]
     public function index(ManagerRegistry $doctrine): Response
     {
         return $this->render('item/index.html.twig', [
@@ -20,7 +20,6 @@ class ItemController extends AbstractController
         ]);
     }
 
-    #[Route('/items', name: 'items_list', methods: ['GET'])]
     public function items(ManagerRegistry $doctrine):Response {
         $items = $doctrine->getRepository(Item::class)->findAll();
         return $this->json($doctrine->getRepository(Item::class)->findAll());
@@ -31,7 +30,7 @@ class ItemController extends AbstractController
 
     }
 
-    public function create()
+    public function create(Request $request)
     {
 
     }
@@ -41,7 +40,6 @@ class ItemController extends AbstractController
 
     }
 
-    #[Route('/edit/{id}', name: 'item_put')]
     public function update(ManagerRegistry $doctrine, int $id): Response
     {
 //        $item = $repository->find($id);
